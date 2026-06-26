@@ -1,0 +1,75 @@
+#### ANOTACIONES SCRIPTING PARA SOP ####
+
+##### REFERENCIA A UN ARCHIVO QUE CONTENGA EN SU NOMBRE UN GUION O CARACTER RARO ##### 
+-> cat ./-pepe para el directorio -pepe
+
+##### REFENCIA A UN ARCHIVO QUE CONTENGA ESPACIOS ######
+-> cat hola\ pepe
+
+##### ARCHIVOS OCULTOS #####
+empiezan con .
+
+##### ls #####
+ls -a -> te da los archivos ocultos tambien
+
+###### find ######
+find . -> lista de forma recursiva todos los archivos ocultos o no ocultos
+-type f (a. regulares)
+-printf -> le da formato 
+	%p path
+	%s size
+	%t time modification
+	%f file name
+	\n salto de linea va a ultimo para que queden listados
+	%m permisos
+	%u user propietary
+
+	(todo esto entre "%p  %t")
+	ejemplo: find . -printf "%s  %u  \n" | column -t
+-name (nombre del archivo)
+-readable, -writable, -executable : filtrar por estos tipos
+-size 150c -> la c al ultimo aclara que son bytes
+-user
+-group
+
+
+##### xargs ##### 
+usa la salida de un comando como parametro del siguiente comando
+
+cat servidores.txt | xargs ping -c 1
+(va a mostrar lista
+de servidores)
+
+
+##### file #####
+muestra tipo y formato del archivo
+
+##### tr #####
+para sustituciones o borrado de caracteres especificos
+
+##### sed #####
+sustituir caracteres o palabras por otros caracteres o palabras
+ejemplo1: cat pepe.txt | head -n 1 | sed "s/pedro/pedrito/g"
+ejemplo2: sed "s/^ *//" -> borra espacios continuos
+EXPLICACION DEL EJEMPLO1:
+Del contenido elige la primera linea, y de ahi sustituye cualquier palabra "pedro" a "pedrito"
+La "/g" especifica que sea para cada concidencia, si no pongo "/g" seria para la primer concidencia
+
+##### expresiones regulares ##### 
+"^r" -> los que empiezan por r
+"^r$pepe" -> empieze con r y que termine con pepe
+"^s.*\.sh$" -> empieze con s, ... , y termine con .sh
+
+##### head/tail ####
+
+##### grep #####
+grep -n -> linea del match
+
+##### awk ####
+
+
+
+
+
+vamos 47 min del Scripting en Bash para principiantes #1 
+
