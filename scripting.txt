@@ -1,16 +1,27 @@
+- VARIABLES DECLARADAS SIN ESPACIOOOOOOOOOS
+- yo dentro de un .sh puedo tirar cualquier comando puro (ej: echo "pepe";)
+
 #### ANOTACIONES SCRIPTING PARA SOP ####
 
 ##### REFERENCIA A UN ARCHIVO QUE CONTENGA EN SU NOMBRE UN GUION O CARACTER RARO ##### 
 -> cat ./-pepe para el directorio -pepe
 
+
+
 ##### REFENCIA A UN ARCHIVO QUE CONTENGA ESPACIOS ######
 -> cat hola\ pepe
+
+
 
 ##### ARCHIVOS OCULTOS #####
 empiezan con .
 
+
+
 ##### ls #####
 ls -a -> te da los archivos ocultos tambien
+
+
 
 ###### find ######
 find . -> lista de forma recursiva todos los archivos ocultos o no ocultos
@@ -33,6 +44,7 @@ find . -> lista de forma recursiva todos los archivos ocultos o no ocultos
 -group
 
 
+
 ##### xargs ##### 
 usa la salida de un comando como parametro del siguiente comando
 
@@ -41,35 +53,63 @@ cat servidores.txt | xargs ping -c 1
 de servidores)
 
 
+
 ##### file #####
 muestra tipo y formato del archivo
 
-##### tr #####
-para sustituciones o borrado de caracteres especificos
 
-##### sed #####
+##### sed ##### / ##### tr ##### -> tienen sus diferencias (dir explicaciones)
 sustituir caracteres o palabras por otros caracteres o palabras
-ejemplo1: cat pepe.txt | head -n 1 | sed "s/pedro/pedrito/g"
-ejemplo2: sed "s/^ *//" -> borra espacios continuos
+ejemplo1 sed: cat pepe.txt | head -n 1 | sed "s/pedro/pedrito/g"
+ejemplo2 sed: sed "s/^ *//" -> borra espacios continuos
+ejemplo3 tr: cat pepe.txt | tr " " "\n"
 EXPLICACION DEL EJEMPLO1:
 Del contenido elige la primera linea, y de ahi sustituye cualquier palabra "pedro" a "pedrito"
 La "/g" especifica que sea para cada concidencia, si no pongo "/g" seria para la primer concidencia
+
+-ROTACIONES CON TR: (dir explicaciones)
+
+
 
 ##### expresiones regulares ##### 
 "^r" -> los que empiezan por r
 "^r$pepe" -> empieze con r y que termine con pepe
 "^s.*\.sh$" -> empieze con s, ... , y termine con .sh
 
+
+
 ##### head/tail ####
+
+
 
 ##### grep #####
 grep -n -> linea del match
 
+
+
 ##### awk ####
+ejemplo1: echo "pepe hola como" | awk '{print $1}' -> filtraria el primer argumento, seria pepe
+ejemplo2: echo "pepe como estas" | awk 'NF{print $NF}' -> agarra el "estas"
+
+
+##### stderr stdin stdout #####
+esto se usa muchisimo en scripting -> ver un video para observar todas las aplicaciones que tiene
+pero es muy interesante aprenderlo	 
 
 
 
 
+#### rev #### -> revierte cadenas 
 
-vamos 47 min del Scripting en Bash para principiantes #1 
+#### wc #### -> cuenta caracteres o lineas, quizas algo mas
 
+#### sort #### -> ordenar a un criterio
+
+#### uniq -u #### -> agarrar linea unica sin repeticiones
+
+#### CODIFICACIONES-DECODIFICACIONES #### 
+base64 -> codificar o decordificar (-d) de una base a otra
+xxd -> pasar de normal a hexa / xxd -> -r hexa a normal
+
+
+ME QUEDE EN 1 hs 42 min
